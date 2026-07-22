@@ -1,0 +1,265 @@
+/* Global Styling & Dark Background */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #050505;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Main Container */
+.container {
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    background: rgba(20, 20, 20, 0.6);
+    padding: 40px 25px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 0, 127, 0.2);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 0, 127, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Profile Image mit interaktivem Hover-Glow */
+.profile-img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ff007f;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
+}
+
+/* Headings & Subtitle */
+h1 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+/* Social Links List */
+.links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Neon Button Base Style */
+.neon-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 24px;
+    min-height: 58px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background: #0d0d0d;
+    border: 2px solid #ff007f;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.2);
+}
+
+/* Shimmer Effect */
+.neon-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 0, 127, 0.4),
+            rgba(255, 255, 255, 0.8),
+            rgba(255, 0, 127, 0.4),
+            transparent
+    );
+    transition: 0.6s;
+}
+
+/* Standard Hover State: Neon Glow & Shimmer */
+.neon-btn:hover {
+    background: #ff007f;
+    border-color: #ff66b2;
+    box-shadow:
+            0 0 10px #ff007f,
+            0 0 25px #ff007f,
+            0 0 40px #ff007f;
+    transform: translateY(-2px) scale(1.02);
+}
+
+.neon-btn:hover::before {
+    left: 100%;
+}
+
+/* Active / Click State */
+.neon-btn:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 0 15px #ff007f;
+}
+
+/* Place Icons & Text above Shimmer */
+.neon-btn i,
+.neon-btn .icon-svg,
+.neon-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.neon-btn i {
+    font-size: 20px;
+}
+
+/* SVG Alignment */
+.neon-btn .icon-svg {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Footer & Legal Links */
+footer {
+    margin-top: 35px;
+    font-size: 12px;
+    color: #555;
+    letter-spacing: 1px;
+}
+
+.legal-link {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.legal-link:hover {
+    color: #ff007f;
+}
+
+/* Modal Overlay */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 100;
+}
+
+.modal:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Modal Content Box */
+.modal-content {
+    background: #0d0d0d;
+    border: 1px solid #ff007f;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 480px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 0 25px rgba(255, 0, 127, 0.3);
+}
+
+.modal-content h2 {
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.modal-content h3 {
+    color: #ff007f;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.modal-content p {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Schließen-Button (X) */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #888;
+    font-size: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #ff007f;
+}
+
+/* Custom Scrollbar für das Datenschutz-Modal */
+.modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #ff007f;
+    border-radius: 3px;
+}
