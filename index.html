@@ -58,7 +58,7 @@
 
     <!-- Footer -->
     <footer>
-        &copy; 2026 • All Rights Reserved •
+        &copy; <span id="year"></span> • All Rights Reserved •
         <a href="#impressum-modal" class="legal-link">Impressum</a> •
         <a href="#datenschutz-modal" class="legal-link">Datenschutz</a>
     </footer>
@@ -113,6 +113,10 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
