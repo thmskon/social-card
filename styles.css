@@ -22,7 +22,6 @@ body {
    2. MAIN CONTAINER & PROFILE SECTION
    ========================================================================== */
 /* Main Container */
-
 .container {
     position: relative;
     width: 100%;
@@ -31,34 +30,11 @@ body {
     background: rgba(20, 20, 20, 0.6);
     padding: 30px 25px;
     border-radius: 0; /* Eckig */
+    border: 2px solid rgba(255, 0, 127, 0.2); /* Ruhender Basis-Rahmen */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 0, 127, 0.1);
     backdrop-filter: blur(10px);
-
-    /* Rahmen mit Farbwechsel */
-    border: 2px solid transparent;
-    border-image: linear-gradient(var(--border-angle, 135deg), #ff007f, #00f0ff, #ff007f) 1;
-
-    /* Dynamischer Dual-Glow */
-    box-shadow: -5px 0 20px rgba(255, 0, 127, 0.3), 5px 0 20px rgba(0, 240, 255, 0.3);
-
-    /* Farbwechsel-Animation */
-    animation: borderRotate 6s linear infinite;
 }
 
-/* Animation für den fließenden Farbwechsel im Rahmen */
-@keyframes borderRotate {
-    0% {
-        border-image: linear-gradient(135deg, #ff007f, #00f0ff, #ff007f) 1;
-        box-shadow: -6px 0 20px rgba(255, 0, 127, 0.4), 6px 0 20px rgba(0, 240, 255, 0.2);
-    }
-    50% {
-        border-image: linear-gradient(315deg, #00f0ff, #ff007f, #00f0ff) 1;
-        box-shadow: -6px 0 20px rgba(0, 240, 255, 0.2), 6px 0 20px rgba(255, 0, 127, 0.4);
-    }
-    100% {
-        border-image: linear-gradient(495deg, #ff007f, #00f0ff, #ff007f) 1;
-        box-shadow: -6px 0 20px rgba(255, 0, 127, 0.4), 6px 0 20px rgba(0, 240, 255, 0.2);
-    }
-}
 .profile-section {
     margin-bottom: 35px;
     padding-bottom: 20px;
