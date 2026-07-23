@@ -29,6 +29,12 @@ body {
     backdrop-filter: blur(10px);
 }
 
+.profile-section {
+    margin-bottom: 35px; /* Abstand zu den Buttons */
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Sehr dezente Trennlinie */
+}
+
 /* Profile Image mit interaktivem Hover-Glow */
 .profile-img {
     width: 110px;
@@ -41,27 +47,57 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Neu: Container für den gesamten Profil-Kopfbereich (Bild, Name, Subtitle) */
+.profile-section {
+    margin-bottom: 35px; /* Abstand zu den Buttons */
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Sehr dezente Trennlinie */
+}
+
+/* Profil Image mit optimiertem zweifarbigem Neon-Glow */
+.profile-img {
+    width: 120px; /* Leicht vergrößert für mehr Präsenz */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+
+    /* Zweifarbiger Rahmen-Trick (Pink & Hellblau) */
+    background: linear-gradient(#0d0d0d, #0d0d0d) padding-box,
+    linear-gradient(135deg, #ff007f, #00f0ff) border-box;
+    border: 3px solid transparent; /* Etwas dickerer Rahmen */
+
+    margin-bottom: 20px;
+
+    /* Zweifarbiger Glow-Schatten */
+    box-shadow: -5px 0 15px rgba(255, 0, 127, 0.4), 5px 0 15px rgba(0, 240, 255, 0.4);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 .profile-img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
+    transform: scale(1.05) rotate(2deg); /* Zusätzlich leichte Drehung beim Hover */
+    box-shadow: -8px 0 25px rgba(255, 0, 127, 0.7), 8px 0 25px rgba(0, 240, 255, 0.7);
 }
 
-/* Headings & Subtitle */
+/* Optimierte Überschrift (Name) */
 h1 {
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 2px;
+    font-size: 26px; /* Leicht vergrößert */
+    font-weight: 800; /* Etwas fetter */
+    letter-spacing: 3px; /* Mehr Laufweite für edleren Look */
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: #fff;
-    text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
+    /* Optimierter Text-Schatten: Tiefe durch Pink-Anteil */
+    text-shadow: 0 0 10px rgba(255, 0, 127, 0.7);
 }
 
+/* Optimierter Untertitel */
 .subtitle {
-    font-size: 14px;
-    color: #aaa;
-    margin-bottom: 30px;
-    letter-spacing: 1px;
+    font-size: 15px; /* Leicht vergrößert */
+    color: #bbb; /* Etwas heller für bessere Lesbarkeit */
+    margin-bottom: 0; /* Abstand wird jetzt von .profile-section kontrolliert */
+    letter-spacing: 1.5px;
+    font-weight: 400;
 }
 
 /* Social Links List */
@@ -71,7 +107,7 @@ h1 {
     gap: 18px;
 }
 
-/* Neon Button Base Style */
+/* Neon Button Base Style - Zweifarbig (Pink & Hellblau) */
 .neon-btn {
     position: relative;
     display: flex;
@@ -84,18 +120,24 @@ h1 {
     font-weight: 600;
     color: #fff;
     background: #0d0d0d;
-    border: 2px solid #ff007f;
-    border-radius: 8px;
+
+    /* Zweifarbiger Rahmen mit Verlauf */
+    border: 2px solid transparent;
+    border-image: linear-gradient(135deg, #ff007f, #00f0ff) 1;
+    border-radius: 8px; /* Hinweis: border-image setzt border-radius außer Kraft. Siehe Erklärung unten! */
+
     text-decoration: none;
     letter-spacing: 2px;
     text-transform: uppercase;
     overflow: hidden;
     cursor: pointer;
     transition: all 0.4s ease-in-out;
-    box-shadow: 0 0 10px rgba(255, 0, 127, 0.2);
+
+    /* Zweifarbiger, dezent leuchtender Schatten im Ruhezustand */
+    box-shadow: -4px 0 12px rgba(255, 0, 127, 0.25), 4px 0 12px rgba(0, 240, 255, 0.25);
 }
 
-/* Shimmer Effect */
+/* Shimmer Effect mit Pink & Cyan/Hellblau */
 .neon-btn::before {
     content: '';
     position: absolute;
@@ -108,20 +150,22 @@ h1 {
             transparent,
             rgba(255, 0, 127, 0.4),
             rgba(255, 255, 255, 0.8),
-            rgba(255, 0, 127, 0.4),
+            rgba(0, 240, 255, 0.4),
             transparent
     );
     transition: 0.6s;
 }
 
-/* Standard Hover State: Neon Glow & Shimmer */
+/* Hover State: Intensiver Pink-Blau Neon Glow */
 .neon-btn:hover {
-    background: #ff007f;
-    border-color: #ff66b2;
+    background: linear-gradient(135deg, rgba(255, 0, 127, 0.2), rgba(0, 240, 255, 0.2));
+
+    /* Stärkerer, zweifarbiger Neon-Glow */
     box-shadow:
-            0 0 10px #ff007f,
-            0 0 25px #ff007f,
-            0 0 40px #ff007f;
+            -10px 0 20px rgba(255, 0, 127, 0.6),
+            10px 0 20px rgba(0, 240, 255, 0.6),
+            inset 0 0 15px rgba(255, 0, 127, 0.3);
+
     transform: translateY(-2px) scale(1.02);
 }
 
