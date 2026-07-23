@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Triggert die Laufleisten-Animation auf dem Container
+    document.querySelector('.container').classList.add('loaded');
+
     // 1. Dynamisches Jahr im Footer / Impressum setzen
     const yearElement = document.getElementById('year');
     if (yearElement) {

@@ -21,16 +21,75 @@ body {
 /* ==========================================================================
    2. MAIN CONTAINER & PROFILE SECTION
    ========================================================================== */
+/* Main Container */
 .container {
+    position: relative;
     width: 100%;
     max-width: 480px;
     text-align: center;
     background: rgba(20, 20, 20, 0.6);
     padding: 30px 25px;
     border-radius: 0; /* Eckig */
-    border: 1px solid rgba(255, 0, 127, 0.2);
+    border: 1px solid rgba(255, 0, 127, 0.2); /* Ruhender Basis-Rahmen */
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 0, 127, 0.1);
     backdrop-filter: blur(10px);
+}
+
+/* SVG-Laufleiste, exakt über dem Container-Rahmen */
+.border-draw {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.border-draw rect {
+    width: 100%;
+    height: 100%;
+    fill: transparent;
+    stroke: url(#neon-glow); /* Greift auf den zweifarbigen SVG-Gradienten zu */
+    stroke-width: 3px;
+
+    /* Länge des Lichtsegments & Lücke definieren */
+    stroke-dasharray: 250 600;
+
+    /* Neon-Glow Effekt (Blau & Pink kombiniert) */
+    filter: drop-shadow(0 0 6px #00f0ff) drop-shadow(0 0 10px #ff007f);
+    opacity: 0.9;
+}
+
+/* Wird getriggert, sobald die Seite geladen ist */
+.container.loaded .border-draw rect {
+    /* Läuft jetzt unendlich (infinite) im Kreis & wechselt die Farben */
+    animation:
+            infiniteBorder 3.5s linear infinite,
+            colorPulse 4s ease-in-out infinite alternate;
+}
+
+/* 1. Endlose Umrundung im Uhrzeigersinn */
+@keyframes infiniteBorder {
+    0% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: -850; /* Erzeugt die flüssige Bewegung um die 4 Kanten */
+    }
+}
+
+/* 2. Fließender Farbwechsel & Schimmer-Effekt */
+@keyframes colorPulse {
+    0% {
+        filter: drop-shadow(0 0 8px #00f0ff) drop-shadow(0 0 12px rgba(255, 0, 127, 0.4));
+    }
+    50% {
+        filter: drop-shadow(0 0 12px #ff007f) drop-shadow(0 0 16px rgba(0, 240, 255, 0.8));
+    }
+    100% {
+        filter: drop-shadow(0 0 8px #00f0ff) drop-shadow(0 0 14px #ff007f);
+    }
 }
 
 .profile-section {
