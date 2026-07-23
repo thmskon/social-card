@@ -1,4 +1,6 @@
-/* Global Styling & Dark Background */
+/* ==========================================================================
+   1. GLOBAL & RESET
+   ========================================================================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -16,98 +18,76 @@ body {
     padding: 20px;
 }
 
-/* Main Container */
+/* ==========================================================================
+   2. MAIN CONTAINER & PROFILE SECTION
+   ========================================================================== */
 .container {
     width: 100%;
     max-width: 480px;
     text-align: center;
     background: rgba(20, 20, 20, 0.6);
     padding: 30px 25px;
-    border-radius: 16px;
+    border-radius: 0; /* Eckig */
     border: 1px solid rgba(255, 0, 127, 0.2);
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 0, 127, 0.1);
     backdrop-filter: blur(10px);
 }
 
 .profile-section {
-    margin-bottom: 35px; /* Abstand zu den Buttons */
+    margin-bottom: 35px;
     padding-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Sehr dezente Trennlinie */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Profile Image mit interaktivem Hover-Glow */
 .profile-img {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ff007f;
-    margin-bottom: 20px;
-    box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Neu: Container für den gesamten Profil-Kopfbereich (Bild, Name, Subtitle) */
-.profile-section {
-    margin-bottom: 35px; /* Abstand zu den Buttons */
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Sehr dezente Trennlinie */
-}
-
-/* Profil Image mit optimiertem zweifarbigem Neon-Glow */
-.profile-img {
-    width: 120px; /* Leicht vergrößert für mehr Präsenz */
+    width: 120px;
     height: 120px;
-    border-radius: 50%;
+    border-radius: 50%; /* Profilbild bleibt kreisrund für den Kontrast */
     object-fit: cover;
+    margin-bottom: 20px;
 
-    /* Zweifarbiger Rahmen-Trick (Pink & Hellblau) */
+    /* Zweifarbiger Rahmen mit Verlauf (Pink & Cyan) */
     background: linear-gradient(#0d0d0d, #0d0d0d) padding-box,
     linear-gradient(135deg, #ff007f, #00f0ff) border-box;
-    border: 3px solid transparent; /* Etwas dickerer Rahmen */
-
-    margin-bottom: 20px;
+    border: 3px solid transparent;
 
     /* Zweifarbiger Glow-Schatten */
     box-shadow: -5px 0 15px rgba(255, 0, 127, 0.4), 5px 0 15px rgba(0, 240, 255, 0.4);
-
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-img:hover {
-    transform: scale(1.05) rotate(2deg); /* Zusätzlich leichte Drehung beim Hover */
+    transform: scale(1.05) rotate(2deg);
     box-shadow: -8px 0 25px rgba(255, 0, 127, 0.7), 8px 0 25px rgba(0, 240, 255, 0.7);
 }
 
-/* Optimierte Überschrift (Name) */
 h1 {
-    font-size: 26px; /* Leicht vergrößert */
-    font-weight: 800; /* Etwas fetter */
-    letter-spacing: 3px; /* Mehr Laufweite für edleren Look */
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 3px;
     text-transform: uppercase;
     margin-bottom: 10px;
     color: #fff;
-    /* Optimierter Text-Schatten: Tiefe durch Pink-Anteil */
     text-shadow: 0 0 10px rgba(255, 0, 127, 0.7);
 }
 
-/* Optimierter Untertitel */
 .subtitle {
-    font-size: 15px; /* Leicht vergrößert */
-    color: #bbb; /* Etwas heller für bessere Lesbarkeit */
-    margin-bottom: 0; /* Abstand wird jetzt von .profile-section kontrolliert */
+    font-size: 15px;
+    color: #bbb;
     letter-spacing: 1.5px;
     font-weight: 400;
 }
 
-/* Social Links List */
+/* ==========================================================================
+   3. BUTTONS & SOCIAL LINKS (ECKIG)
+   ========================================================================== */
 .links-list {
     display: flex;
     flex-direction: column;
     gap: 18px;
 }
 
-/* Neon Button Base Style - Zweifarbig (Pink & Hellblau) */
+/* Neon Button Base - Zweifarbig & Eckig */
 .neon-btn {
     position: relative;
     display: flex;
@@ -120,24 +100,23 @@ h1 {
     font-weight: 600;
     color: #fff;
     background: #0d0d0d;
-
-    /* Zweifarbiger Rahmen mit Verlauf */
-    border: 2px solid transparent;
-    border-image: linear-gradient(135deg, #ff007f, #00f0ff) 1;
-    border-radius: 8px; /* Hinweis: border-image setzt border-radius außer Kraft. Siehe Erklärung unten! */
-
     text-decoration: none;
     letter-spacing: 2px;
     text-transform: uppercase;
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.4s ease-in-out;
+    border-radius: 0; /* Scharfe Ecken */
 
-    /* Zweifarbiger, dezent leuchtender Schatten im Ruhezustand */
+    /* Knackiger zweifarbiger Verlauf-Rahmen für eckige Buttons */
+    border: 2px solid transparent;
+    border-image: linear-gradient(135deg, #ff007f, #00f0ff) 1;
+
+    /* Zweifarbiger Glow im Ruhezustand */
     box-shadow: -4px 0 12px rgba(255, 0, 127, 0.25), 4px 0 12px rgba(0, 240, 255, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
-/* Shimmer Effect mit Pink & Cyan/Hellblau */
+/* Shimmer Light Sweep Effect */
 .neon-btn::before {
     content: '';
     position: absolute;
@@ -148,24 +127,20 @@ h1 {
     background: linear-gradient(
             90deg,
             transparent,
-            rgba(255, 0, 127, 0.4),
+            rgba(255, 0, 127, 0.3),
             rgba(255, 255, 255, 0.8),
-            rgba(0, 240, 255, 0.4),
+            rgba(0, 240, 255, 0.3),
             transparent
     );
-    transition: 0.6s;
+    transition: left 0.6s ease;
 }
 
-/* Hover State: Intensiver Pink-Blau Neon Glow */
 .neon-btn:hover {
     background: linear-gradient(135deg, rgba(255, 0, 127, 0.2), rgba(0, 240, 255, 0.2));
 
-    /* Stärkerer, zweifarbiger Neon-Glow */
-    box-shadow:
-            -10px 0 20px rgba(255, 0, 127, 0.6),
-            10px 0 20px rgba(0, 240, 255, 0.6),
-            inset 0 0 15px rgba(255, 0, 127, 0.3);
-
+    box-shadow: -10px 0 20px rgba(255, 0, 127, 0.6),
+    10px 0 20px rgba(0, 240, 255, 0.6),
+    inset 0 0 15px rgba(255, 0, 127, 0.3);
     transform: translateY(-2px) scale(1.02);
 }
 
@@ -173,13 +148,12 @@ h1 {
     left: 100%;
 }
 
-/* Active / Click State */
 .neon-btn:active {
     transform: translateY(1px) scale(0.98);
     box-shadow: 0 0 15px #ff007f;
 }
 
-/* Place Icons & Text above Shimmer */
+/* Elements Layering & Icon Alignment */
 .neon-btn i,
 .neon-btn .icon-svg,
 .neon-btn span {
@@ -191,7 +165,6 @@ h1 {
     font-size: 20px;
 }
 
-/* SVG Alignment */
 .neon-btn .icon-svg {
     width: 20px;
     height: 20px;
@@ -199,7 +172,9 @@ h1 {
     vertical-align: middle;
 }
 
-/* Footer & Legal Links */
+/* ==========================================================================
+   4. FOOTER & LEGAL LINKS
+   ========================================================================== */
 footer {
     margin-top: 35px;
     font-size: 12px;
@@ -210,14 +185,16 @@ footer {
 .legal-link {
     color: #888;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
 .legal-link:hover {
     color: #ff007f;
 }
 
-/* Modal Overlay */
+/* ==========================================================================
+   5. MODALS (ECKIG)
+   ========================================================================== */
 .modal {
     position: fixed;
     top: 0;
@@ -240,14 +217,8 @@ footer {
     pointer-events: auto;
 }
 
-/* Modal Content Box - Zweifarbiger Neon-Rahmen */
 .modal-content {
     background: #0d0d0d;
-
-    /* Zweifarbiger Rahmen mit Verlauf (Pink & Hellblau) */
-    border: 2px solid transparent;
-    border-image: linear-gradient(135deg, #ff007f, #00f0ff) 1;
-
     padding: 30px;
     max-width: 480px;
     width: 90%;
@@ -255,8 +226,12 @@ footer {
     overflow-y: auto;
     text-align: left;
     position: relative;
+    border-radius: 0; /* Scharfe Ecken */
 
-    /* Zweifarbiger Glow-Schatten nach außen */
+    /* Eckiger Gradienten-Rahmen fürs Modal */
+    border: 2px solid transparent;
+    border-image: linear-gradient(135deg, #ff007f, #00f0ff) 1;
+
     box-shadow: -8px 0 25px rgba(255, 0, 127, 0.3), 8px 0 25px rgba(0, 240, 255, 0.3);
 }
 
@@ -266,12 +241,11 @@ footer {
     margin-bottom: 15px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    /* Leichtes Leuchten für die Modal-Überschrift */
     text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
 }
 
 .modal-content h3 {
-    color: #00f0ff; /* Geändert zu Hellblau für besseren Kontrast */
+    color: #00f0ff;
     font-size: 14px;
     margin-top: 15px;
     margin-bottom: 5px;
@@ -286,7 +260,6 @@ footer {
     margin-bottom: 10px;
 }
 
-/* Schließen-Button (X) mit Hover-Effekt */
 .close-btn {
     position: absolute;
     top: 15px;
@@ -295,7 +268,7 @@ footer {
     font-size: 24px;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s, text-shadow 0.3s;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .close-btn:hover {
@@ -303,7 +276,7 @@ footer {
     text-shadow: 0 0 8px #00f0ff;
 }
 
-/* Custom Scrollbar für das Modal (Zweifarbig) */
+/* Custom Scrollbar */
 .modal-content::-webkit-scrollbar {
     width: 6px;
 }
@@ -313,8 +286,6 @@ footer {
 }
 
 .modal-content::-webkit-scrollbar-thumb {
-    /* Farbverlauf für die Scrollbar */
     background: linear-gradient(to bottom, #ff007f, #00f0ff);
-    border-radius: 3px;
+    border-radius: 0;
 }
-
